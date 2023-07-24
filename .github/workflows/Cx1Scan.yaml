@@ -1,0 +1,36 @@
+name: Cx1 Scan
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkmarx AST Github Action
+      # You may pin to the exact commit or the version.
+      # uses: Checkmarx/ast-github-action@3bbaca0807ff5abd587965391138479c23b7b369
+      uses: Checkmarx/ast-github-action@2.0.18
+      with:
+        # Provide the AST portal URL
+        base_uri: https://deu.ast.checkmarx.net
+        # Provide the Tenant for AST portal URL
+        cx_tenant: cx_tam_appsec_michael_kubiaczyk
+        # Client ID for AST portal authentication
+        cx_client_id: ${{ secrets.Cx1_Client_ID }}
+        # Secret key for AST portal authentication
+        cx_client_secret: ${{ secrets.Cx1_Client_Secret }}
+        # Select a Checkmarx Project Name
+        project_name: ${{ github.repository }}
+        # Branch name
+        branch: ${{ github.head_ref || github.ref }}
+        # GitHub API Token
+        github_token: ${{ github.token }}
+        # Additional parameters for AST scan
+        # additional_params: # optional, default is 
+        # Repository name for PR decoration
+        repo_name: ${{ github.event.repository.name }}
+        # Organization name to create the Pr comment
+        namespace: ${{ github.repository_owner }}
+        # Pr Number of the pull request that needs the decoration
+        pr_number: ${{ github.event.number }}
