@@ -17,9 +17,9 @@ jobs:
         # Provide the Tenant for AST portal URL
         cx_tenant: cx_tam_appsec_michael_kubiaczyk
         # Client ID for AST portal authentication
-        cx_client_id: ${{ secrets.Cx1_Client_ID }}
+        cx_client_id: ${{ secrets.CX1_CLIENT_ID }}
         # Secret key for AST portal authentication
-        cx_client_secret: ${{ secrets.Cx1_Client_Secret }}
+        cx_client_secret: ${{ secrets.CX1_CLIENT_SECRET }}
         # Select a Checkmarx Project Name
         project_name: ${{ github.repository }}
         # Branch name
